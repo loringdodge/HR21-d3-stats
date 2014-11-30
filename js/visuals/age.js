@@ -1,6 +1,6 @@
 define(['d3'], function(d3) {
   return {
-    graphic : function(){
+    render : function(){
 
         // Set margin, width, and height for the svg
         var margin = { top: 10, right: 20, bottom: 40, left: 10 };
@@ -27,7 +27,7 @@ define(['d3'], function(d3) {
             .attr("height", height)
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile.tsv", function(error, data) {
+        d3.tsv("data/profile1.tsv", function(error, data) {
 
           // Find the min and max age in the data set
           var min = d3.min(data, function(d) { return d.age; });
@@ -45,7 +45,7 @@ define(['d3'], function(d3) {
           // Append the x-axis 55px from the bottom
           svg.append("g")
             .attr("class", "x axis")
-            .attr("transform", "translate(0," + (height - 55) + ")")
+            .attr("transform", "translate(0," + (height - 20) + ")")
             .style("fill", "#FFF")
             .call(xAxis);
 
@@ -58,7 +58,12 @@ define(['d3'], function(d3) {
                 .attr("cx", function(d, i) { return x(d.age); })
                 .attr("cy", function(d, i) { return y(i); })
                 .attr("r", 4)
-                .style("fill", function(d) { return color(d.age) })
+                .attr("fill", "#FF5953")
+                .attr("class", function(d){ return 'age id' + d.id })
+                .style('opacity', 0)
+                .transition()
+                  .style('opacity', 1)
+                  .delay(function(d, i) { return i * 50; })
 
         });
     }

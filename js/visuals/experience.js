@@ -1,6 +1,6 @@
 define(['d3'], function(d3) {
   return {
-    graphic : function(){
+    render : function(){
 
       // Set margin, width, and height for the svg
       var margin = { top: 10, right: 10, bottom: 10, left: 30 };
@@ -32,7 +32,7 @@ define(['d3'], function(d3) {
           .attr("height", height)
 
       // Get the tsv (tab-separated values) data
-      d3.tsv("data/profile.tsv", function(error, data) {
+      d3.tsv("data/profile1.tsv", function(error, data) {
 
         // Sort the data from most experience to least
         data = data.sort(function (a,b) {return d3.descending(a.experience, b.experience); });
@@ -69,8 +69,13 @@ define(['d3'], function(d3) {
             .attr("class", "experience-circle")
             .attr('cx', function(d, i) { return i * ((width - 40) / 32) + 30} )
             .attr('cy', function(d, i) { return y(d.experience)} )
-            .attr('r', 3)
-            .style("fill", function(d) { return color(d.international) });
+            .attr('r', 4)
+            .attr("fill", "#98FF73")
+            .attr("class", function(d){ return 'experience id' + d.id })
+            .style('opacity', 0)
+            .transition()
+              .style('opacity', 1)
+              .delay(function(d, i) { return i * 50; })
 
         // Append a path/line based on the data
         svg.append("path")

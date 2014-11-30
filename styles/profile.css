@@ -12,6 +12,7 @@ body svg { fill: none;}
 .line { fill: none; stroke: steelblue; stroke-width: .5px; }
 
 #main { margin: 50px auto; width: 910px; }
+.clickable {cursor:pointer;}
 
 .graphic-container { height:170px; width: 900px;}
 .graphic-container svg { float:left; margin: 30px 0px 0px 10px; }
@@ -45,3 +46,28 @@ body svg { fill: none;}
 
 #flaticon-license { margin:60px auto; width:450px; color: #CCC; }
 #flaticon-license a { color: #FFF; }
+
+.tooltip-person {
+  position:absolute;
+  padding: 15px 15px 19px 15px;
+  background: rgba(255, 255, 255, 1);
+  color: #333;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.tooltip-person:after {
+  box-sizing: border-box;
+  display: inline;
+  line-height: 1;
+  font-size: 10px;
+  width: 20px;
+  top:99%;
+  left:30px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 1);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+

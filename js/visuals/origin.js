@@ -1,6 +1,6 @@
 define(['d3'], function(d3) {
   return {
-    graphic : function(){
+    render : function(){
 
         // Set margin, width, and height for the svg
         var margin = { top: 10, right: 20, bottom: 40, left: 10 };
@@ -64,7 +64,7 @@ define(['d3'], function(d3) {
         }
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile.tsv", function(error, data) {
+        d3.tsv("data/profile1.tsv", function(error, data) {
 
             // Translate each data item into a node with x, y, and r properties
             var nodesUS = bubbleUS.nodes(processData(data)[0])
@@ -81,7 +81,12 @@ define(['d3'], function(d3) {
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
                 .attr('r', function(d) { return d.r; })
                 .attr('class', "international-circle")
-                .style("fill", function(d) { return color(d.international) });
+                .style("fill", function(d) { return color(d.international) })
+                .attr("class", function(d){ return 'id' + d.id })
+                .style('opacity', 0)
+                .transition()
+                  .style('opacity', 1)
+                  .delay(function(d, i) { return i * 50; })
 
             // Append a text overlay for international
             internationalSVG.append("text")
@@ -100,7 +105,12 @@ define(['d3'], function(d3) {
                 .attr('transform', function(d) { return 'translate(' + d.x + ',' + d.y + ')'; })
                 .attr('r', function(d) { return d.r; })
                 .attr('class', "international-circle")
-                .style("fill", function(d) { return color(d.international) })
+                .attr("fill", function(d) { return color(d.international) })
+                .attr("class", function(d){ return 'origin id' + d.id })
+                .style('opacity', 0)
+                .transition()
+                  .style('opacity', 1)
+                  .delay(function(d, i) { return i * 50; })
 
             // Append a text overlay for U.S.
             usSVG.append("text")

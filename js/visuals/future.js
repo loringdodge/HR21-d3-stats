@@ -1,10 +1,10 @@
 define(['d3'], function(d3) {
   return {
-    graphic : function(){
+    render : function(){
 
         // Set width and height for the svg
         var width = 500,
-            height = 110;
+            height = 270;
         
         // Create a linear scale for the x-range
         var x = d3.scale.linear()
@@ -17,7 +17,7 @@ define(['d3'], function(d3) {
             .attr("height", height)
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile.tsv", function(error, data) {
+        d3.tsv("data/profile1.tsv", function(error, data) {
 
           // Filter the data into categories representing the number of people in each category
           var data = d3.nest()
@@ -38,7 +38,7 @@ define(['d3'], function(d3) {
             .range(["#FCFCF7", "#FFF872"]);
 
           // Set the domain of the x linear scale
-          x.domain([min, max]);
+          x.domain([0, max]);
 
           // Append a 'g' element for each data item
           var node = svg.selectAll('.future-rect')
@@ -49,9 +49,17 @@ define(['d3'], function(d3) {
 
           // Append a rectangle to each 'g'
           node.append('rect')
-            .attr('width', function(d) { return x(d.values.length); })
+            .attr('width', function(d) { console.log(d); return x(d.values.length); })
             .attr('height', 20)
-            .style("fill", function(d) { return color(d.values.length) });
+            .attr('fill', "#FFF872")
+            .attr('class', function(d) {
+              var set = d.values;
+              var results = "future ";
+              for(var i = 0; i < d.values.length; i ++){
+                results += "id" + d.values[i]['id'] + " ";
+              }
+              return results;
+            })
 
           // Append a text element inside each rectangle
           node.append("text")
@@ -61,7 +69,7 @@ define(['d3'], function(d3) {
             .style("stroke", "#333")
             .style("font-size", "13px")
             .style("font-weight", 100)
-            .text(function(d) { return d.key });
+            .text(function(d) { return d.key + " (" + d.values.length + ")"});
 
         });
     }
