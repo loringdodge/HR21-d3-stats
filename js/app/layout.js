@@ -20,7 +20,7 @@ define([
       var template = _.template(
           '<div class="<%= name %> graphic-container">' +
             '<div class="graphic-title color-border-<%= name %>"><%= name %></div>' + 
-            '<div class="graphic-description"><span class="color-<%= name %>">32 People</span></br>Hover over each person to see where they fit.</div>' +
+            '<div class="graphic-description"><span class="color-<%= name %>">32 People</span></br>Click over each person to see where they fit.</div>' +
           '</div>'
       );
 

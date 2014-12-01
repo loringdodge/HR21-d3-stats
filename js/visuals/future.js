@@ -60,6 +60,10 @@ define(['d3'], function(d3) {
               }
               return results;
             })
+            .style('opacity', 0)
+            .transition()
+              .style('opacity', 1)
+              .delay(function(d, i) { return i * 50; })
 
           // Append a text element inside each rectangle
           node.append("text")
