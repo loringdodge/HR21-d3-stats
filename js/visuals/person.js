@@ -10,6 +10,10 @@ define(['d3'], function(d3) {
   }
 
   return {
+
+    title : "32 People",
+
+    text : "Click over each person to see where they fit.",
     
     render : function(){
 
@@ -37,7 +41,7 @@ define(['d3'], function(d3) {
             .text("a simple tooltip");
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile1.tsv", function(error, data) {
+        d3.tsv("data/data1.tsv", function(error, data) {
 
           // Sort the data to group the genders
           // data = data.sort(function (a,b) {return d3.ascending(a.gender, b.gender); });

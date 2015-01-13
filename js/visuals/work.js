@@ -1,5 +1,10 @@
 define(['d3'], function(d3) {
   return {
+
+  title : "Before Hack Reactor",
+
+    text : "Members of HR21 were in several different industries before they came",
+
     render : function(){
 
         // Set width and height for the svg
@@ -12,7 +17,7 @@ define(['d3'], function(d3) {
 
         // Create a linear scale for the y-range
         var y = d3.scale.linear()
-            .range([0, height]);
+            .range([height-20, 0]);
 
         // Select the '.work' div (in profile.html), append an svg and set dimensions
         var svg = d3.select('.work')
@@ -21,7 +26,7 @@ define(['d3'], function(d3) {
             .attr("height", height)
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile1.tsv", function(error, data) {
+        d3.tsv("data/data1.tsv", function(error, data) {
 
           // Filter the data into categories representing the number of people in each industry
           var data = d3.nest()
@@ -37,7 +42,7 @@ define(['d3'], function(d3) {
           var max = d3.max(data, function(d) { return d.values.length });
 
           x.domain([0, data.length]);
-          y.domain([min, max]);
+          y.domain([0, max]);
 
           // Create a color linear scale matching a value with a color along a range
           var color = d3.scale.linear()
@@ -49,12 +54,13 @@ define(['d3'], function(d3) {
             .data(data)
             .enter().append('g')
             .attr("class", "work-rect")
-            .attr("transform", function(d,i) { return "translate(" + x(d.values.length) + ", 0)"; });
+            .attr("transform", function(d,i) { return "translate(" + i * (width / data.length) + ", 0)"; });
 
           // Append a rectangle to each 'g'
           node.append("rect")
-            .attr("width", function(d, i) { return y(d.values.length) })
-            .attr("height", 100)
+            .attr("y", function(d) { return y(d.values.length); })
+            .attr("width", width / data.length)
+            .attr("height", function(d) { return height - y(d.values.length) })
             .attr("fill", "#59B4FF")
             .style("stroke", "#333")
             .style("stroke-width", "2px")
@@ -73,10 +79,10 @@ define(['d3'], function(d3) {
 
           // Append a text element inside each rectangle
           node.append("text")
-            .attr("dy", ".4em")
-            .attr("dx", ".8em")
+            .attr("dy", 0 + 10)
+            .attr("dx", "1.6em")
             .attr("dominant-baseline", "central")
-            .style("stroke", "#333")
+            .style("stroke", "#FFF")
             .style("font-size", "13px")
             .style("font-weight", 100)
             .style("writing-mode", "tb")

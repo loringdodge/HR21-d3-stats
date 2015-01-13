@@ -1,5 +1,10 @@
 define(['d3'], function(d3) {
   return {
+
+    title : "After Hack Reactor",
+
+    text : "Where do they want to end up after it's all said and done?",
+    
     render : function(){
 
         // Set width and height for the svg
@@ -17,11 +22,11 @@ define(['d3'], function(d3) {
             .attr("height", height)
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile1.tsv", function(error, data) {
+        d3.tsv("data/data1.tsv", function(error, data) {
 
           // Filter the data into categories representing the number of people in each category
           var data = d3.nest()
-            .key(function(d) { return d.work;})
+            .key(function(d) { return d.future;})
             .rollup(function(d) { return d })
             .entries(data);
 

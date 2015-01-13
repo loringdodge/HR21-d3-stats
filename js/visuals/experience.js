@@ -1,5 +1,10 @@
 define(['d3'], function(d3) {
   return {
+
+    title : "..in months",
+
+    text : "Most of HR21 came with under a year of JS experience",
+
     render : function(){
 
       // Set margin, width, and height for the svg
@@ -32,7 +37,7 @@ define(['d3'], function(d3) {
           .attr("height", height)
 
       // Get the tsv (tab-separated values) data
-      d3.tsv("data/profile1.tsv", function(error, data) {
+      d3.tsv("data/data1.tsv", function(error, data) {
 
         // Sort the data from most experience to least
         data = data.sort(function (a,b) {return d3.descending(a.experience, b.experience); });

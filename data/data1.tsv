@@ -1,7 +1,7 @@
-id	name	age	gender	international	work	experience future
+id	name	age	gender	international	work	experience	future
 1	Person #1	22	M	Y	Sciences	0	Start-Up
 2	Person #2	20	M	N	Medical	2	Entrepreneur
-3	Person #3	28	M	N	Insurance	5 Mid-Size Company
+3	Person #3	28	M	N	Insurance	5	Mid-Size Company
 4	Person #4	24	M	N	Medical	5	Large-Scale Company
 5	Person #5	22	M	N	Finance	1	Entrepreneur
 6	Person #6	29	M	N	Volunteer	3	Start-Up

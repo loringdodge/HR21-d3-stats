@@ -11,16 +11,18 @@ define([
 
   var svgTags = Array.prototype.slice.call(arguments, 2);
 
+  var visualNames = ["person", "age", "origin", "work", "experience", "future"];
+
   return {
 
-    render : function() {
+    visualNames: visualNames,
 
-      var visualNames = ["person", "age", "origin", "work", "experience", "future"];
+    render : function() {
 
       var template = _.template(
           '<div class="<%= name %> graphic-container">' +
             '<div class="graphic-title color-border-<%= name %>"><%= name %></div>' + 
-            '<div class="graphic-description"><span class="color-<%= name %>">32 People</span></br>Click over each person to see where they fit.</div>' +
+            '<div class="graphic-description"><span class="color-<%= name %> bold"></span></br><span id="text-<%= name %>"><span></div>' +
           '</div>'
       );
 

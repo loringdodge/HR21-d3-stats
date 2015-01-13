@@ -19,6 +19,11 @@ require([
 
         $.each(graphics, function(index, value){
             value.render();
+            var visualName = layout.visualNames[index];
+            var visualTitle = value.title;
+            var visualText = value.text;
+            $('.color-' + visualName).text(visualTitle);
+            $('#text-' + visualName).text(visualText);
         });
 
         var storage = {};
@@ -30,7 +35,7 @@ require([
             $('.id' + previous).each(function(){
               var key = $(this).attr('class');
               $(this).attr('fill', storage[key]);
-            })
+            });
 
             $('.id' + id).each(function(){
               var key = $(this).attr('class');
@@ -39,7 +44,7 @@ require([
                 storage[key] = color;
               }
               $(this).attr('fill', '#FFF');
-            })
+            });
 
             previous = id;
 

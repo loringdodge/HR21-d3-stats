@@ -1,5 +1,10 @@
 define(['d3'], function(d3) {
   return {
+
+    title : "20's & 30's",
+
+    text : "Most people are in their 20's but there are several above 30",
+
     render : function(){
 
         // Set margin, width, and height for the svg
@@ -27,7 +32,7 @@ define(['d3'], function(d3) {
             .attr("height", height)
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile1.tsv", function(error, data) {
+        d3.tsv("data/data1.tsv", function(error, data) {
 
           // Find the min and max age in the data set
           var min = d3.min(data, function(d) { return d.age; });

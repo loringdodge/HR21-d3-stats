@@ -18,7 +18,7 @@ body svg { fill: none;}
 .graphic-container svg { float:left; margin: 30px 0px 0px 10px; }
 .graphic-title { float:left; margin: 65px 0 0 0px; padding: 5px 0 5px 0; width:90px; text-align:center; -webkit-transform: rotate(-90deg);}
 .graphic-description { float:right; margin-top:50px;width:170px; color:#CCC; font-size:16px; text-align:center;}
-.graphic-description span { font-weight:bold; } 
+.graphic-description span.bold { font-weight:bold; } 
 
 #svg-person { fill: #E8AB4C;}
 #svg-age { fill: #FF5953;}

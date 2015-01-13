@@ -1,5 +1,10 @@
 define(['d3'], function(d3) {
   return {
+
+    title : "Around the world",
+
+    text : "Four of our fellow students came a long way to be here",
+
     render : function(){
 
         // Set margin, width, and height for the svg
@@ -64,7 +69,7 @@ define(['d3'], function(d3) {
         }
 
         // Get the tsv (tab-separated values) data
-        d3.tsv("data/profile1.tsv", function(error, data) {
+        d3.tsv("data/data1.tsv", function(error, data) {
 
             // Translate each data item into a node with x, y, and r properties
             var nodesUS = bubbleUS.nodes(processData(data)[0])
